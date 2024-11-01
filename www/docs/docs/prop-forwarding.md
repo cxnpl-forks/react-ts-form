@@ -6,9 +6,9 @@ sidebar_position: 10
 
 ## Forwarding props to the form component
 
-Prop forwarding is an advanced feature that allows you to control which props `@ts-react/form` forward to your components as well as the name.
+Prop forwarding is an advanced feature that allows you to control which props `@cxnpl/react-ts-form` forward to your components as well as the name.
 
-You probably don't need to use this especially when building a project from scratch, but it can allow more customization. This can be useful for integrating with existing components, or for creating a selection of components that can be used both with and without `@ts-react/form`.
+You probably don't need to use this especially when building a project from scratch, but it can allow more customization. This can be useful for integrating with existing components, or for creating a selection of components that can be used both with and without `@cxnpl/react-ts-form`.
 
 For example, if I wanted the react hook form control to be forwarded to a prop named `floob` I would do:
 

@@ -1,6 +1,6 @@
 {
-  "name": "@ts-react/form",
-  "version": "1.0.6",
+  "name": "@cxnpl/react-ts-form",
+  "version": "1.8.3",
   "description": "Build forms faster!",
   "module": "lib/index.mjs",
   "main": "lib/index.cjs",
@@ -16,15 +16,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/iway1/react-ts-form.git"
+    "url": "git+https://github.com/cxnpl-forks/react-ts-form.git"
   },
   "type": "module",
-  "author": "Isaac Way",
+  "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/iway1/react-ts-form/issues"
+    "url": "https://github.com/cxnpl-forks/react-ts-form/issues"
   },
-  "homepage": "https://github.com/iway1/react-ts-form#readme",
+  "homepage": "https://github.com/cxnpl-forks/react-ts-form#readme",
   "devDependencies": {
     "@hookform/resolvers": "^2.9.10",
     "@rollup/plugin-terser": "^0.2.1",

@@ -110,7 +110,7 @@ const Form = createTsForm(mapping, {
   - `label` - The label extracted from `.describe()`
   - `placeholder` - The placeholder extracted from `.describe()`
 
-This can be useful in cases where you would like to integrate with existing components, or just don't want `@ts-react/form` to forward any props for you.
+This can be useful in cases where you would like to integrate with existing components, or just don't want `@cxnpl/react-ts-form` to forward any props for you.
 
 ## createUniqueFieldSchema
 

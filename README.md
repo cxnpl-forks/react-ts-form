@@ -1,3 +1,8 @@
+# @cxnpl/react-ts-form
+
+> [!IMPORTANT]
+> This project is a fork of the [react-ts-form](https://github.com/cxnpl-forks/react-ts-form) project.
+
 ![banner](https://user-images.githubusercontent.com/12774588/210178528-2eb928f9-fbad-414b-9f69-a57550d05363.png)
 
 <p align="center">Build maintainable, typesafe forms faster 🏃💨</p>
@@ -9,14 +14,8 @@
 </p>
 
 <p align="center">
-<b>@ts-react/form</b> handles the boilerplate involved when building forms using <b>zod</b> and <b>react-hook-form</b> without&nbsp;sacrificing&nbsp;customizability. 
+<b>@cxnpl/react-ts-form</b> handles the boilerplate involved when building forms using <b>zod</b> and <b>react-hook-form</b> without&nbsp;sacrificing&nbsp;customizability. 
 </p>
-
-<div align="center">
-
-<a href=""> [![codecov](https://codecov.io/github/iway1/react-ts-form/branch/main/graph/badge.svg?token=U4UFRGI3HF)](https://codecov.io/github/iway1/react-ts-form) [![Twitter](https://img.shields.io/twitter/url/https/twitter.com/isaac_ts_way.svg?style=social&label=Follow%20%40isaac_ts_way)](https://twitter.com/isaac_ts_way)</a>
-
-</div>
 
 # Features
 
@@ -41,7 +40,7 @@ Make sure you have `"strict": true` in your tsconfig.json compilerOptions and ma
 Install package and dependencies with your preferred package manager:
 
 ```sh
-yarn add @ts-react/form
+yarn add @cxnpl/react-ts-form
 
 # required peer dependencies
 yarn add zod react-hook-form @hookform/resolvers
@@ -120,4 +119,4 @@ Note that you can still compile with older versions of typescript and the type c
 ## Limitations
 
 - Doesn't support class components
-- `@ts-react/form` does not yet support "dependent field props", meaning you can't change one field component based on the value of another, but it's a feature we plan on adding soon.
+- `@cxnpl/react-ts-form` does not yet support "dependent field props", meaning you can't change one field component based on the value of another, but it's a feature we plan on adding soon.
