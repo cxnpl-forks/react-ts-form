@@ -1600,6 +1600,116 @@ describe("createSchemaForm", () => {
     expect(screen.queryByTestId("error")).toHaveTextContent("");
     expect(mockOnSubmit).toHaveBeenCalledWith(defaultValues);
   });
+  it("should pass props correctly to each field for a deeply nested object schema", async () => {
+    const NumberSchema = createUniqueFieldSchema(z.number(), "number");
+    const mockOnSubmit = jest.fn();
+
+    function TextField({ text }: { text: string }) {
+      const { error, field } = useTsController<string>();
+      return (
+        <>
+          <div>
+            text {field.name} prop: {text}
+          </div>
+          <div data-testid="error">{error?.errorMessage}</div>
+        </>
+      );
+    }
+
+    function NumberField({ num }: { num: string }) {
+      const { field } = useTsController<string>();
+      return (
+        <div>
+          number {field.name} prop: {num}
+        </div>
+      );
+    }
+
+    const mapping = [
+      [z.string(), TextField],
+      [NumberSchema, NumberField],
+    ] as const;
+
+    const Form = createTsForm(mapping);
+
+    const schema = z.object({
+      a: z.object({
+        text1: z.string(),
+        number1: NumberSchema,
+        b: z.object({
+          text2: z.string(),
+          number2: NumberSchema,
+          c: z.object({
+            text3: z.string(),
+            number3: NumberSchema,
+            d: z.object({
+              text4: z.string(),
+              number4: NumberSchema,
+            }),
+          }),
+        }),
+      }),
+      text0: z.string(),
+      number0: NumberSchema,
+    });
+
+    render(
+      <Form
+        schema={schema}
+        onSubmit={mockOnSubmit}
+        defaultValues={{}}
+        props={{
+          a: {
+            text1: { text: "text1" },
+            number1: { num: "number1" },
+            // @ts-expect-error -- FIXME: cannot infer nested props
+            b: {
+              text2: { text: "text2" },
+              number2: { num: "number2" },
+              c: {
+                text3: { text: "text3" },
+                number3: { num: "number3" },
+                d: {
+                  text4: { text: "text4" },
+                  number4: { num: "number4" },
+                },
+              },
+            },
+          },
+          text0: { text: "text0" },
+          number0: { num: "number0" },
+        }}
+        renderAfter={() => <button type="submit">submit</button>}
+      />
+    );
+
+    expect(screen.queryByText("text text0 prop: text0")).toBeInTheDocument();
+    expect(
+      screen.queryByText("number number0 prop: number0")
+    ).toBeInTheDocument();
+    expect(screen.queryByText("text a.text1 prop: text1")).toBeInTheDocument();
+    expect(
+      screen.queryByText("number a.number1 prop: number1")
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByText("text a.b.text2 prop: text2")
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByText("number a.b.number2 prop: number2")
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByText("text a.b.c.text3 prop: text3")
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByText("number a.b.c.number3 prop: number3")
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByText("text a.b.c.d.text4 prop: text4")
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByText("number a.b.c.d.number4 prop: number4")
+    ).toBeInTheDocument();
+  });
   it("should render two copies of an object schema if in an unmapped array schema", async () => {
     const NumberSchema = createUniqueFieldSchema(z.number(), "number");
     const mockOnSubmit = jest.fn();
