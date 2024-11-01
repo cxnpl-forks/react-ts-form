@@ -1,6 +1,6 @@
 {
   "name": "@cxnpl/react-ts-form",
-  "version": "1.8.3",
+  "version": "1.8.4",
   "description": "Build forms faster!",
   "module": "lib/index.mjs",
   "main": "lib/index.cjs",
